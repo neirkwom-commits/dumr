@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login DSRT</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">DSRT</div>
+</header>
+
+<div class="login-container">
+  <h2>Login ke DSRT</h2>
+  <form id="loginForm">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Masukkan email" required autocomplete="username" />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Masukkan password" required autocomplete="current-password" />
+    <button type="submit" class="login-submit">Login</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    // Dummy login check (email = user@example.com, password = 123456)
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    if(email === 'user@example.com' && password === '123456') {
+      alert('Login berhasil!');
+      window.location.href = 'dashboard.html';
+    } else {
+      alert('Email atau password salah!');
+    }
+  });
+</script>
+
+</body>
+</html>

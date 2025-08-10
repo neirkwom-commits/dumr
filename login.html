@@ -1,44 +1,139 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login DSRT</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login - DSRT</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    background: #142a3a;
+    padding: 40px 50px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    box-sizing: border-box;
+  }
+  h2 {
+    margin: 0 0 24px 0;
+    color: #00ffd5;
+    font-weight: 900;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    box-shadow: inset 0 0 0 1px white;
+    transition: box-shadow 0.3s ease;
+    color: #fff;
+    background: transparent;
+  }
+  input[type="email"]::placeholder,
+  input[type="password"]::placeholder {
+    color: #999;
+  }
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    outline: 2px solid #00ffd5;
+    box-shadow: 0 0 8px #00ffd5;
+  }
+  button.login-submit {
+    width: 100%;
+    padding: 14px 0;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    background: #ffcb05;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255,203,5,0.7);
+    transition: background 0.3s ease;
+  }
+  button.login-submit:hover {
+    background: #f2a900;
+  }
+  .forgot-register {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  .forgot-register a,
+  .forgot-register button {
+    color: #00ffd5;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #00ffd5;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  .forgot-register a:hover,
+  .forgot-register button:hover {
+    background: #00ffd5;
+    color: #000;
+  }
+</style>
 </head>
 <body>
+  <div class="login-container" role="main" aria-label="Form Login DSRT">
+    <h2>Login ke DSRT</h2>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="masukkan email" required autocomplete="username" />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="masukkan password" required autocomplete="current-password" />
+      <button type="submit" class="login-submit">Login</button>
+    </form>
+    <div class="forgot-register">
+      <a href="#" id="forgotPasswordLink">Forgot password?</a>
+      <button id="registerBtn" type="button">Register</button>
+    </div>
+  </div>
 
-<header>
-  <div class="logo">DSRT</div>
-</header>
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const forgotLink = document.getElementById('forgotPasswordLink');
+    const registerBtn = document.getElementById('registerBtn');
 
-<div class="login-container">
-  <h2>Login ke DSRT</h2>
-  <form id="loginForm">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Masukkan email" required autocomplete="username" />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Masukkan password" required autocomplete="current-password" />
-    <button type="submit" class="login-submit">Login</button>
-  </form>
-</div>
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Login functionality belum tersedia');
+    });
 
-<script>
-  const form = document.getElementById('loginForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    // Dummy login check (email = user@example.com, password = 123456)
-    const email = form.email.value.trim();
-    const password = form.password.value.trim();
+    forgotLink.addEventListener('click', e => {
+      e.preventDefault();
+      alert('Fitur lupa password akan dikembangkan');
+    });
 
-    if(email === 'user@example.com' && password === '123456') {
-      alert('Login berhasil!');
-      window.location.href = 'dashboard.html';
-    } else {
-      alert('Email atau password salah!');
-    }
-  });
-</script>
-
+    registerBtn.addEventListener('click', () => {
+      alert('Fitur registrasi akan dikembangkan');
+    });
+  </script>
 </body>
 </html>

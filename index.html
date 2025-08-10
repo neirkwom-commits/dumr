@@ -1,127 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fitur Expand dengan Icon 3D</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #121212;
-    color: #00ffd5;
-    padding: 20px;
-  }
-  .feature-button {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(145deg, #00ffd5, #00bfa5);
-    border: none;
-    padding: 12px 30px;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 30px;
-    user-select: none;
-    box-shadow:
-      0 4px 6px rgba(0,255,213,0.4),
-      inset 0 -4px 6px rgba(0,191,165,0.7);
-    transition: background 0.3s ease;
-    gap: 12px;
-  }
-  .feature-button:hover {
-    background: linear-gradient(145deg, #00bfa5, #007f73);
-  }
-
-  /* Icon 3D style */
-  .icon-3d {
-    width: 28px;
-    height: 28px;
-    filter:
-      drop-shadow(1px 1px 0 #009975)
-      drop-shadow(-1px -1px 0 #00ffd5);
-    transition: transform 0.3s ease;
-  }
-
-  /* Panah animasi */
-  .arrow {
-    margin-left: auto;
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-    fill: #004d40;
-  }
-
-  .arrow.open {
-    transform: rotate(180deg);
-    fill: #00ffd5;
-  }
-
-  .feature-list {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-    background: rgba(0, 255, 213, 0.1);
-    border-radius: 12px;
-    padding: 0 20px;
-    margin-top: 12px;
-  }
-  .feature-list.open {
-    max-height: 500px; 
-    padding: 15px 20px;
-  }
-  .feature-list ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  .feature-list li {
-    margin: 8px 0;
-    font-weight: 600;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nama Proyek Kamu - Landing Page</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+    header {
+      background: #007bff;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    section.hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: #e9f0ff;
+    }
+    section.hero h1 {
+      margin-bottom: 20px;
+      font-size: 2.8rem;
+    }
+    section.hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    button.cta {
+      background: #007bff;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button.cta:hover {
+      background: #0056b3;
+    }
+    section.features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+      flex-wrap: wrap;
+    }
+    .feature {
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      text-align: center;
+    }
+    .feature h3 {
+      margin-bottom: 12px;
+      color: #007bff;
+    }
+    .feature p {
+      color: #555;
+    }
+    footer {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    @media(max-width: 600px){
+      section.features {
+        flex-direction: column;
+        align-items: center;
+      }
+      .feature {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<button class="feature-button" id="toggleFeatureBtn" aria-expanded="false" aria-controls="featureList" aria-label="Toggle fitur">
-  <!-- Icon 3D (F) -->
-  <svg class="icon-3d" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-    <defs>
-      <linearGradient id="gradF" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#00ffd5"/>
-        <stop offset="100%" stop-color="#007f73"/>
-      </linearGradient>
-      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" >
-        <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#004d40"/>
-      </filter>
-    </defs>
-    <text x="8" y="48" font-family="Arial Black, Gadget, sans-serif" font-size="48" fill="url(#gradF)" filter="url(#shadow)">F</text>
-  </svg>
-  F
-  <!-- Panah -->
-  <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true" role="img" >
-    <path d="M7 10l5 5 5-5z"/>
-  </svg>
-</button>
+<header>Nama Proyek Kamu</header>
 
-<div class="feature-list" id="featureList" role="region" aria-live="polite" aria-label="Daftar fitur">
-  <ul>
-    <li>Feature 1: Otomatisasi</li>
-    <li>Feature 2: Keamanan Global</li>
-    <li>Feature 3: Maintenance Jadwal</li>
-    <li>Feature 4: Control Pusat</li>
-    <li>Feature 5: Pembaruan Fitur</li>
-  </ul>
-</div>
+<section class="hero">
+  <h1>Selamat datang di Proyek Kami</h1>
+  <p>Menghadirkan solusi terbaik untuk kebutuhan digital Anda.</p>
+  <button class="cta" onclick="alert('Mulai sekarang!')">Mulai Sekarang</button>
+</section>
 
-<script>
-  const toggleBtn = document.getElementById('toggleFeatureBtn');
-  const featureList = document.getElementById('featureList');
-  const arrow = toggleBtn.querySelector('.arrow');
+<section class="features" aria-label="Fitur Utama">
+  <div class="feature">
+    <h3>Fitur 1</h3>
+    <p>Deskripsi fitur 1 yang menarik dan mudah dipahami pengguna.</p>
+  </div>
+  <div class="feature">
+    <h3>Fitur 2</h3>
+    <p>Deskripsi fitur 2 yang memberikan nilai tambah bagi pengguna.</p>
+  </div>
+  <div class="feature">
+    <h3>Fitur 3</h3>
+    <p>Deskripsi fitur 3 yang menjadikan produk ini berbeda.</p>
+  </div>
+</section>
 
-  toggleBtn.addEventListener('click', () => {
-    const isOpen = featureList.classList.toggle('open');
-    arrow.classList.toggle('open', isOpen);
-    toggleBtn.setAttribute('aria-expanded', isOpen);
-  });
-</script>
+<footer>
+  &copy; 2025 Nama Proyek Kamu. All rights reserved.
+</footer>
 
 </body>
 </html>

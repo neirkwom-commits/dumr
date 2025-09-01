@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Profile Menu DSRT</title>
+<style>
+  :root {
+    --accent: #00ffd5;
+    --card-bg: #0d2a30;
+    --modal-bg: #112d38;
+    --btn-bg: #ffcb05;
+    --danger-bg: #fe486a;
+    --danger-bg-hover: #c8203d;
+    --text-light: #cde9e9;
+  }
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    min-height: 100vh;
+  }
+  .profile-container {
+    max-width: 430px;
+    margin: 32px auto;
+    background: var(--card-bg);
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0,255,213,0.13);
+    padding: 18px 0 12px 0;
+  }
+  .menu-section {
+    margin-bottom: 18px;
+    padding: 0 24px;
+  }
+  .menu-title {
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-top: 12px;
+    letter-spacing: 1px;
+  }
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .menu-list li {
+    padding: 10px 0 10px 12px;
+    border-bottom: 1px solid #203a43;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: background .15s;
+    border-radius: 8px;
+  }
+  .menu-list li:last-child {
+    border-bottom: none;
+  }
+  .menu-list li:hover {
+    background: #19323d;
+  }
+  /* Danger/Hapus Akun style */
+  .danger {
+    color: #fff;
+    background: var(--danger-bg);
+    text-align: center;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-radius: 14px;
+    padding: 12px 0;
+    cursor: pointer;
+    transition: background .15s;
+    border: none;
+    font-size: 1.05rem;
+  }
+  .danger:hover {
+    background: var(--danger-bg-hover);
+  }
+  /* Modal Style */
+  .modal-backdrop {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(13,42,48,0.77);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-active { display: flex !important;}
+  .modal-box {
+    background: var(--modal-bg);
+    color: var(--text-light);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,255,213,0.13);
+    padding: 32px 20px 24px 20px;
+    min-width: 290px; max-width: 95vw; width: 380px;
+    position: relative;
+    text-align: center;
+    border: 2px solid var(--accent);
+  }
+  .modal-box h3 {
+    color: var(--accent);
+    margin-bottom: 18px;
+    font-size: 1.2rem;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.7rem;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .modal-box input, .modal-box textarea {
+    width: 90%; margin: 12px 0; padding: 10px;
+    border-radius: 10px; border: 1px solid #444;
+    background: #203a43; color: var(--text-light); font-size: 1rem;
+  }
+  .modal-box label {
+    font-weight: bold; display: block; text-align: left; margin-left: 5%; margin-top: 8px;
+  }
+  .modal-box button {
+    margin-top: 18px;
+    background: var(--btn-bg);
+    color: #222;
+    border: none;
+    border-radius: 16px;
+    padding: 8px 26px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    .profile-container {padding: 8px 0;}
+    .menu-section {padding: 0 7px;}
+    .modal-box {padding: 18px 7px 16px 7px; min-width: 0; width: 96vw;}
+    .menu-title {font-size: 1.1rem;}
+    .danger {font-size: 1rem;}
+  }
+</style>
+</head>
+<body>
+  <div class="profile-container">
+    <!-- Pengaturan Profil -->
+    <div class="menu-section">
+      <div class="menu-title">Pengaturan Profil</div>
+      <ul class="menu-list">
+        <li onclick="showModal('login')">Login</li>
+        <li onclick="showModal('register')">Register</li>
+        <li onclick="showModal('forgot')">Forgot Password</li>
+      </ul>
+    </div>
+    <!-- Keamanan -->
+    <div class="menu-section">
+      <div class="menu-title">Keamanan</div>
+      <ul class="menu-list">
+        <li onclick="showModal('password')">Ubah Password</li>
+        <li onclick="showModal('license')">License Terms</li>
+        <li onclick="showModal('privacy')">Privacy Policy</li>
+        <li onclick="showModal('terms')">Terms of Service</li>
+      </ul>
+    </div>
+    <!-- Bantuan -->
+    <div class="menu-section">
+      <div class="menu-title">Bantuan</div>
+      <ul class="menu-list">
+        <li onclick="showModal('faq')">FAQ</li>
+        <li onclick="showModal('support')">Contact Support</li>
+      </ul>
+    </div>
+    <!-- Tentang Akun -->
+    <div class="menu-section">
+      <div class="menu-title">Tentang Akun</div>
+      <ul class="menu-list">
+        <li onclick="showModal('logout')">Logout</li>
+      </ul>
+    </div>
+    <div class="danger" onclick="showModal('delete')">
+      Hapus Akun
+    </div>
+  </div>
+  <!-- Modal Container -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal-box" id="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script>
+    // Isi konten tiap modal
+    const modalContent = {
+      login: `<h3>Login</h3>
+        <label>Email</label><input type="email" placeholder="Email">
+        <label>Password</label><input type="password" placeholder="Password">
+        <button>Masuk</button>`,
+      register: `<h3>Register</h3>
+        <label>Nama Lengkap</label><input type="text" placeholder="Nama Lengkap">
+        <label>Email</label><input type="email" placeholder="Email">
+        <label>Password</label><input type="password" placeholder="Password">
+        <button>Daftar</button>`,
+      forgot: `<h3>Forgot Password</h3>
+        <label>Email</label><input type="email" placeholder="Email">
+        <button>Reset Password</button>`,
+      password: `<h3>Ubah Password</h3>
+        <label>Password Lama</label><input type="password" placeholder="Password Lama">
+        <label>Password Baru</label><input type="password" placeholder="Password Baru">
+        <button>Ubah Password</button>`,
+      license: `<h3>License Terms</h3>
+        <p>Penggunaan aplikasi ini tunduk pada lisensi DSRT. Dilarang keras mendistribusikan ulang tanpa izin.</p>`,
+      privacy: `<h3>Privacy Policy</h3>
+        <p>Kami menjaga kerahasiaan data Anda dan tidak akan membagikan data pribadi tanpa persetujuan.</p>`,
+      terms: `<h3>Terms of Service</h3>
+        <p>Dengan menggunakan aplikasi ini, Anda setuju atas seluruh syarat dan ketentuan yang berlaku.</p>`,
+      faq: `<h3>FAQ</h3>
+        <ul style="text-align:left;">
+          <li><b>Bagaimana cara login?</b> Klik menu Login dan masukkan email & password Anda.</li>
+          <li><b>Bagaimana reset password?</b> Gunakan menu Forgot Password dan ikuti petunjuk.</li>
+          <li><b>Bagaimana upgrade akun?</b> Hubungi support kami melalui menu Contact Support.</li>
+        </ul>`,
+      support: `<h3>Contact Support</h3>
+        <label>Pesan</label><textarea placeholder="Deskripsikan masalah Anda..."></textarea>
+        <button>Kirim Pesan</button>`,
+      logout: `<h3>Logout</h3>
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <button>Keluar</button>`,
+      delete: `<h3 style="color:#fe486a;">Hapus Akun</h3>
+        <p>Apakah Anda yakin ingin <b>menghapus akun</b> ini secara permanen? Tindakan ini tidak dapat dibatalkan!</p>
+        <button style="background:#fe486a;color:#fff;">Hapus Akun</button>`
+    };
+    function showModal(type) {
+      document.getElementById('modal-body').innerHTML = modalContent[type] || '<p>Content not found.</p>';
+      document.getElementById('modal').classList.add('modal-active');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('modal-active');
+      document.getElementById('modal-body').innerHTML = '';
+    }
+    // Tutup modal dengan ESC
+    window.addEventListener('keydown', function(e){
+      if(e.key === "Escape"){ closeModal(); }
+    });
+    // Tutup modal jika klik backdrop
+    document.getElementById('modal').addEventListener('click', function(e){
+      if(e.target === this){ closeModal(); }
+    });
+  </script>
+</body>
+</html>

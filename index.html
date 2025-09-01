@@ -32,21 +32,6 @@
     user-select: none;
     cursor: default;
   }
-  .btn-login {
-    background: transparent;
-    border: 2px solid #00ffd5;
-    color: #00ffd5;
-    padding: 8px 22px;
-    border-radius: 30px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 16px;
-  }
-  .btn-login:hover {
-    background: #00ffd5;
-    color: #000;
-  }
 
   .hero-bg {
     position: fixed;
@@ -137,6 +122,8 @@
     width: fit-content;
     box-shadow: 0 5px 15px rgba(255,203,5,0.6);
     transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
   }
   .btn-primary:hover {
     background: #f2a900;
@@ -188,124 +175,6 @@
     font-weight: 700;
   }
 
-  /* Modal styles */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 50;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
-    backdrop-filter: blur(5px);
-  }
-  .modal-content {
-    background: #142a3a;
-    margin: 10% auto;
-    padding: 30px 40px;
-    border-radius: 12px;
-    max-width: 400px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    color: white;
-    position: relative;
-    animation: fadeInUp 0.4s ease forwards;
-  }
-  .modal-content h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #00ffd5;
-    font-weight: 900;
-    text-align: center;
-  }
-  .modal-content label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-  .modal-content input[type="email"],
-  .modal-content input[type="password"] {
-    width: 100%;
-    padding: 10px 14px;
-    margin-bottom: 18px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    box-shadow: inset 0 0 0 1px white;
-  }
-  .modal-content input::placeholder {
-    color: #999;
-  }
-  .modal-content button.login-submit {
-    background: #ffcb05;
-    border: none;
-    width: 100%;
-    padding: 14px 0;
-    font-weight: 700;
-    font-size: 16px;
-    border-radius: 30px;
-    cursor: pointer;
-    color: #000;
-    box-shadow: 0 5px 15px rgba(255,203,5,0.7);
-    transition: background 0.3s ease;
-  }
-  .modal-content button.login-submit:hover {
-    background: #f2a900;
-  }
-  .modal-content .forgot-register {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    user-select: none;
-  }
-  .modal-content .forgot-register a {
-    color: #00ffd5;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    border: none;
-    padding: 0;
-  }
-  .modal-content .forgot-register a:hover {
-    color: #ffcb05;
-  }
-  .modal-content .register-btn {
-    background: transparent;
-    border: 2px solid #00ffd5;
-    color: #00ffd5;
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .modal-content .register-btn:hover {
-    background: #00ffd5;
-    color: #000;
-  }
-  .close-btn {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    font-size: 24px;
-    font-weight: 900;
-    color: #00ffd5;
-    cursor: pointer;
-    user-select: none;
-  }
-  .close-btn:hover {
-    color: #ffcb05;
-  }
-
-  /* Animations */
-  @keyframes fadeInUp {
-    0% {opacity: 0; transform: translateY(40px);}
-    100% {opacity: 1; transform: translateY(0);}
-  }
-
   /* Responsive */
   @media (max-width: 480px) {
     header {
@@ -334,28 +203,6 @@
       padding: 14px 30px;
       font-size: 1rem;
     }
-    .modal-content {
-      margin: 0;
-      width: 100vw;
-      height: 100vh;
-      border-radius: 0;
-      padding: 30px 20px;
-      box-sizing: border-box;
-      max-width: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content form {
-      width: 100%;
-      max-width: 360px;
-    }
-    .modal-content input[type="email"],
-    .modal-content input[type="password"] {
-      max-width: 100%;
-      width: 100%;
-    }
   }
 </style>
 </head>
@@ -363,7 +210,6 @@
 
 <header>
   <div class="logo">DSRT</div>
-  <button class="btn-login" id="openLoginBtn">Login</button>
 </header>
 
 <div class="hero-bg">
@@ -377,7 +223,7 @@
   <div class="short-logo">DSRT</div>
   <h1>Digital Smart Revise Technology</h1>
   <p>Menghadirkan solusi digital pintar untuk transformasi bisnis yang efisien dan inovatif.</p>
-  <button class="btn-primary" onclick="alert('Fitur pelajari lebih lanjut akan dikembangkan')">Coba Sekarang</button>
+  <a class="btn-primary" href="home.html">Coba Sekarang</a>
 </section>
 
 <section class="features" aria-label="Fitur Unggulan DSRT">
@@ -409,63 +255,6 @@
 <footer>
   &copy; 2025 DSRT - Digital Smart Revise Technology. All rights reserved.
 </footer>
-
-<!-- Modal Login -->
-<div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
-  <div class="modal-content">
-    <span class="close-btn" id="closeLoginBtn" aria-label="Close login form">&times;</span>
-    <h2 id="loginTitle">Login ke DSRT</h2>
-    <form id="loginForm">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="masukkan email" required />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="masukkan password" required />
-      <button type="submit" class="login-submit">Login</button>
-    </form>
-    <div class="forgot-register">
-      <a href="#" id="forgotPasswordLink">Forgot password?</a>
-      <button class="register-btn" id="registerBtn">Register</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  const openBtn = document.getElementById('openLoginBtn');
-  const modal = document.getElementById('loginModal');
-  const closeBtn = document.getElementById('closeLoginBtn');
-  const loginForm = document.getElementById('loginForm');
-  const forgotLink = document.getElementById('forgotPasswordLink');
-  const registerBtn = document.getElementById('registerBtn');
-
-  openBtn.addEventListener('click', () => {
-    modal.style.display = 'block';
-    modal.setAttribute('aria-hidden', 'false');
-  });
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-  });
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
-
-  loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Login functionality belum tersedia');
-  });
-
-  forgotLink.addEventListener('click', e => {
-    e.preventDefault();
-    alert('Fitur lupa password akan dikembangkan');
-  });
-
-  registerBtn.addEventListener('click', () => {
-    alert('Fitur registrasi akan dikembangkan');
-  });
-</script>
 
 </body>
 </html>

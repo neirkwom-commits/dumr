@@ -6,6 +6,12 @@
 <title>DSRT - Digital Smart Revise Technology</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  :root {
+    --accent: #00ffd5;
+    --border-style: 2px solid var(--accent);
+    --card-bg: #0d2a30;
+    --footer-bg: #001f27;
+  }
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: 'Roboto', sans-serif;
@@ -23,12 +29,13 @@
     top: 0;
     z-index: 20;
     box-sizing: border-box;
+    border-bottom: var(--border-style);
   }
   .logo {
     font-weight: 900;
     font-size: 26px;
     letter-spacing: 3px;
-    color: #00ffd5;
+    color: var(--accent);
     user-select: none;
     cursor: default;
   }
@@ -87,11 +94,10 @@
     z-index: 1;
   }
 
-  /* Logo singkat dan judul */
   .hero .short-logo {
     font-weight: 900;
     font-size: 48px;
-    color: #00ffd5;
+    color: var(--accent);
     letter-spacing: 5px;
     margin: 0 0 12px 0;
     user-select: none;
@@ -101,7 +107,7 @@
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 20px 0;
-    color: #00ffd5;
+    color: var(--accent);
   }
   .hero p {
     font-size: 1.25rem;
@@ -129,7 +135,6 @@
     background: #f2a900;
   }
 
-  /* Fitur Unggulan */
   section.features {
     max-width: 1200px;
     margin: 40px auto 60px;
@@ -137,7 +142,7 @@
   }
   section.features h2 {
     text-align: center;
-    color: #00ffd5;
+    color: var(--accent);
     font-weight: 900;
     font-size: 2rem;
     margin-bottom: 24px;
@@ -148,34 +153,40 @@
     gap: 24px;
   }
   .feature-item {
-    background: rgba(0,255,213,0.1);
+    background: var(--card-bg);
+    border: var(--border-style);
     padding: 20px;
     border-radius: 12px;
     text-align: center;
+    transition: box-shadow .18s ease, transform .18s ease;
+  }
+  .feature-item:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    transform: translateY(-6px);
+    border: var(--border-style);
   }
   .feature-icon {
     font-size: 48px;
-    color: #00ffd5;
+    color: var(--accent);
     margin-bottom: 12px;
   }
   .feature-item h3 {
-    color: #00ffd5;
+    color: var(--accent);
     margin-bottom: 8px;
   }
   .feature-item p {
     color: #cde9e9;
   }
 
-  /* Footer */
   footer {
-    background: #001f27;
-    color: #00ffd5;
+    background: var(--footer-bg);
+    color: var(--accent);
     padding: 20px 0;
     text-align: center;
     font-weight: 700;
+    border-top: var(--border-style);
   }
 
-  /* Responsive */
   @media (max-width: 480px) {
     header {
       padding: 12px 20px;
@@ -202,6 +213,12 @@
     .btn-primary {
       padding: 14px 30px;
       font-size: 1rem;
+    }
+    .features-grid {
+      gap: 14px;
+    }
+    .feature-item {
+      padding: 14px;
     }
   }
 </style>

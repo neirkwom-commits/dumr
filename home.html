@@ -7,23 +7,35 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
     :root{
-      --bg:#06151a;
-      --card:#0d2a30;
-      --accent:#00ffd5;
-      --muted:#9fdfe6;
-      --glass: rgba(255,255,255,0.03);
-      --active:#ffcb05;
+      --accent: #00ffd5;
+      --muted: #9fdfe6;
+      --active: #ffcb05;
+      --border-style: 2px solid var(--accent);
+      --card-bg: #0d2a30;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:'Inter',system-ui,Arial;color:#eafaf9;background:linear-gradient(180deg,#041017,#07242b);-webkit-font-smoothing:antialiased}
-    /* Center area */
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:'Inter',system-ui,Arial;
+      color:#eafaf9;
+      background:#041017;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
     .center{
-      width:100%;max-width:960px;text-align:center;
+      width:100%;
+      max-width:960px;
+      text-align:center;
     }
     h1{margin:0 0 8px;color:var(--accent);font-weight:800}
     p.lead{margin:0 0 22px;color:var(--muted)}
-    /* Features grid */
     .features{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -31,17 +43,25 @@
       margin-top:18px;
     }
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.03);
-      padding:18px;border-radius:12px;
-      min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background: var(--card-bg);
+      border: var(--border-style);
+      padding:18px;
+      border-radius:12px;
+      min-height:140px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
       transition:transform .18s ease, box-shadow .18s ease;
     }
-    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.6)}
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+      border: var(--border-style);
+    }
     .icon{font-size:34px;margin-bottom:10px;color:var(--accent)}
     .card h3{margin:6px 0;color:#fff;font-size:1.05rem}
     .card p{margin:0;color:var(--muted);font-size:0.9rem}
-    /* Bottom nav (non-fixed, scrolls with page) */
     .bottom-nav{
       position:relative;
       margin:34px auto 40px;
@@ -52,17 +72,33 @@
       justify-content:space-between;
       gap:12px;
       padding:8px 12px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01))
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow:0 8px 24px rgba(2,6,12,0.45);
+      background: var(--card-bg);
+      border: var(--border-style);
+      box-shadow:0 8px 24px rgba(2,6,12,0.20);
+      border-radius:12px;
     }
-    .nav-item{flex:1;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-weight:700;border-radius:10px;padding:10px 12px;cursor:pointer}
-    .nav-item.center{flex:0.9;background:linear-gradient(90deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border-radius:12px;color:var(--active);box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+    .nav-item{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:700;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer
+    }
+    .nav-item.center{
+      flex:0.9;
+      background:rgba(0,255,213,0.07);
+      border-radius:12px;
+      color:var(--active);
+      box-shadow:0 6px 18px rgba(0,0,0,0.12)
+    }
     .nav-item.left{justify-content:flex-start;padding-left:20px}
     .nav-item.right{justify-content:flex-end;padding-right:20px}
-    /* small labels */
     .label{display:block;font-size:12px;color:var(--muted)}
-    /* responsive */
     @media (max-width:520px){
       .bottom-nav{padding:8px;margin:20px 12px}
       .nav-item.left,.nav-item.right{padding:8px}
@@ -76,26 +112,22 @@
     <div class="center" aria-live="polite">
       <h1>Home</h1>
       <p class="lead">Pilih fitur editing yang Anda butuhkan — foto, video, logo, atau hapus latar belakang dengan cepat.</p>
-
       <div class="features" role="region" aria-label="Fitur Editing">
         <article class="card" role="button" tabindex="0" aria-label="Editing Foto">
           <div class="icon">🖼️</div>
           <h3>Editing Foto</h3>
           <p>Crop, retouch, filter, color grading, dan optimasi gambar.</p>
         </article>
-
         <article class="card" role="button" tabindex="0" aria-label="Editing Video">
           <div class="icon">🎬</div>
           <h3>Editing Video</h3>
           <p>Potong, transisi, overlay, dan render cepat dengan preset.</p>
         </article>
-
         <article class="card" role="button" tabindex="0" aria-label="Editing Logo">
           <div class="icon">🔰</div>
           <h3>Editing Logo</h3>
           <p>Buat atau sesuaikan logo, ekspor vektor dan PNG berkualitas.</p>
         </article>
-
         <article class="card" role="button" tabindex="0" aria-label="Remove Background">
           <div class="icon">✂️</div>
           <h3>Remove Background</h3>
@@ -104,8 +136,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Bottom navigation placed in normal flow (tidak fixed) sehingga ikut di-scroll -->
   <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
     <div class="nav-item left" role="link" aria-label="Premium">
       <div>
@@ -113,14 +143,12 @@
         <span class="label">Upgrade</span>
       </div>
     </div>
-
     <div class="nav-item center" role="link" aria-current="page" aria-label="Home">
       <div>
         <div style="font-weight:900">Home</div>
         <span class="label">Beranda</span>
       </div>
     </div>
-
     <div class="nav-item right" role="link" aria-label="Profile">
       <div>
         <div style="font-weight:900;color:var(--muted)">Profile</div>

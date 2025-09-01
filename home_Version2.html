@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DSRT — Home</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    :root{
+      --bg:#06151a;
+      --card:#0d2a30;
+      --accent:#00ffd5;
+      --muted:#9fdfe6;
+      --glass: rgba(255,255,255,0.03);
+      --active:#ffcb05;
+      --nav-height: 72px; /* visual reference */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Inter',system-ui,Arial;color:#eafaf9;background:linear-gradient(180deg,#041017,#07242b);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+
+    .container{max-width:960px;margin:24px auto;padding:24px}
+    .center{width:100%;text-align:center}
+    h1{margin:0 0 8px;color:var(--accent);font-weight:800}
+    p.lead{margin:0 0 22px;color:var(--muted)}
+
+    /* Features grid */
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:18px;border-radius:12px;
+      min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transition:transform .18s ease, box-shadow .18s ease; -webkit-tap-highlight-color: transparent;
+    }
+    .card:active{transform:translateY(-2px)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.6)}
+    .icon{font-size:34px;margin-bottom:10px;color:var(--accent)}
+    .card h3{margin:6px 0;color:#fff;font-size:1.05rem}
+    .card p{margin:0;color:var(--muted);font-size:0.9rem}
+
+    /* Bottom nav - part of the normal flow so it scrolls with page */
+    .bottom-nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);box-shadow:0 10px 30px rgba(2,6,12,0.6);
+      margin:22px 0 40px; /* spacing so it visually sits at the bottom of content */
+    }
+    .nav-item{flex:1;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-weight:700;border-radius:10px;padding:10px 12px;cursor:pointer;user-select:none}
+    .nav-item.center{flex:0.9;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;color:var(--active);box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+    .nav-item.left{justify-content:flex-start;padding-left:20px}
+    .nav-item.right{justify-content:flex-end;padding-right:20px}
+    .label{display:block;font-size:12px;color:var(--muted)}
+
+    /* mobile tweaks */
+    @media (max-width:520px){
+      .container{padding:16px;margin:16px}
+      .icon{font-size:30px}
+      .features{gap:12px}
+      .bottom-nav{padding:10px;margin:18px 0 28px}
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <div class="center" aria-live="polite">
+      <h1>Home</h1>
+      <p class="lead">Pilih fitur editing yang Anda butuhkan — foto, video, logo, atau hapus latar belakang dengan cepat.</p>
+
+      <div class="features" role="region" aria-label="Fitur Editing">
+        <article class="card" role="button" tabindex="0" aria-label="Editing Foto">
+          <div class="icon">🖼️</div>
+          <h3>Editing Foto</h3>
+          <p>Crop, retouch, filter, color grading dan optimasi gambar.</p>
+        </article>
+
+        <article class="card" role="button" tabindex="0" aria-label="Editing Video">
+          <div class="icon">🎬</div>
+          <h3>Editing Video</h3>
+          <p>Potong, transisi, overlay, dan render cepat dengan preset.</p>
+        </article>
+
+        <article class="card" role="button" tabindex="0" aria-label="Editing Logo">
+          <div class="icon">🔰</div>
+          <h3>Editing Logo</h3>
+          <p>Buat atau sesuaikan logo, ekspor vektor dan PNG berkualitas.</p>
+        </article>
+
+        <article class="card" role="button" tabindex="0" aria-label="Remove Background">
+          <div class="icon">✂️</div>
+          <h3>Remove Background</h3>
+          <p>Hapus latar otomatis (AI) atau manual dengan alat presisi.</p>
+        </article>
+      </div>
+
+      <!-- bottom nav now part of the page flow so it scrolls away with content -->
+      <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
+        <div class="nav-item left" role="link" aria-label="Premium">
+          <div>
+            <div style="font-weight:900;color:var(--accent)">Premium</div>
+            <span class="label">Upgrade</span>
+          </div>
+        </div>
+
+        <div class="nav-item center" role="link" aria-current="page" aria-label="Home">
+          <div>
+            <div style="font-weight:900">Home</div>
+            <span class="label">Beranda</span>
+          </div>
+        </div>
+
+        <div class="nav-item right" role="link" aria-label="Profile">
+          <div>
+            <div style="font-weight:900;color:var(--muted)">Profile</div>
+            <span class="label">Akun</span>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </main>
+</body>
+</html>
